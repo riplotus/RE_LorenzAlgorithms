@@ -1,0 +1,104 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="1097547735" file="/home/mi/lingsun/Documents/MATLAB/Toolboxes/Core_Lorenz_algorithms/Lorenz_reverse_engineering.prj" location="/home/mi/lingsun/Documents/MATLAB/Toolboxes/Core_Lorenz_algorithms" name="Lorenz_reverse_engineering" target="target.mlapps" target-name="Package App">
+    <param.appname>Lorenz_reverse_engineering</param.appname>
+    <param.authnamewatermark>L. Sun, T. Lorenz</param.authnamewatermark>
+    <param.email>lingsun@zedat.fu-berlin.de</param.email>
+    <param.company>Free Universtity Berlin, AG MathLife</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Inferring a model from an input ASTG.</param.summary>
+    <param.description>function [I,K] = reverse_engineering(maximal_activity, Delta, model_condition)
+% Input:
+%       max_activity - maximal activity value of each nodes, [max_1, ..., max_V] 
+%       Delta - the state transition matrix, size |X|*N (#states * # nodes)
+%                       Delta(i,j): state transition of the i-th state, the j-th component, one of {-1,0,+1}
+%       model_condition: 'Visibility', 'Observability-Snoussi' 
+%~~~'Visibility':
+% Output: M = (I,K) with only necessrary interactions and ASTG(M) \cong T  
+%~~~'Observability-Snoussi':
+%  Output: Model M=&lt;I,K&gt; with ASTG(M)~=T, and has no unnecessary interaction, 
+%           and mimimal number of violations of the Snoussi-condition in all interactions 
+%           (among all models that can genereate the same ASTG).
+%~~~~~~~
+%          I - an interaction graph, I(i,j): i-th node regulate j-th node, within {-max_i, ... ,max_i}
+%          K - the logical parameter. K(i,j): logical parameters of node j under the i-th resource in 
+%               the resource list OmegaList: subsets of the predecessors, 
+%               eg: the resource list of {v1, v2} is
+%                   0    0 % empty set
+%                   0    2 % {v2}
+%                   1    0 % {v1}
+%                   1    2 % {v1, v2}</param.description>
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>/home/mi/lingsun/Documents/MATLAB/Toolboxes/Core_Lorenz_algorithms</param.output>
+    <param.guid>ce5e2fb0-edb2-445e-b2c4-cdf82698a9c0</param.guid>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.screenshot />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}/reverse_engineering.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}/Algo1_Logical_Parameters.m</file>
+      <file>${PROJECT_ROOT}/Algo2_Visibility_Model.m</file>
+      <file>${PROJECT_ROOT}/Algo3_Activate_Value.m</file>
+      <file>${PROJECT_ROOT}/Algo4_Observability_Snoussi_Model.m</file>
+      <file>${PROJECT_ROOT}/Delta_u_row.m</file>
+      <file>${PROJECT_ROOT}/IG2Sign.m</file>
+      <file>${PROJECT_ROOT}/IG_res_corres.m</file>
+      <file>${PROJECT_ROOT}/Predecessor.m</file>
+      <file>${PROJECT_ROOT}/Resource.m</file>
+      <file>${PROJECT_ROOT}/construct_state_node_res.m</file>
+      <file>${PROJECT_ROOT}/isin.m</file>
+      <file>${PROJECT_ROOT}/statePos.m</file>
+      <file>${PROJECT_ROOT}/statespace.m</file>
+      <file>${PROJECT_ROOT}/subset.m</file>
+      <file>${PROJECT_ROOT}/u_row_state.m</file>
+      <file>${PROJECT_ROOT}/u_rowtype_dectect.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="/home/mi/lingsun/Documents/MATLAB/Toolboxes" name="Core_Lorenz_algorithms" optional="false">/home/mi/lingsun/Documents/MATLAB/Toolboxes/Core_Lorenz_algorithms</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/import/matlabR2016b</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>false</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>true</linux>
+      <solaris>false</solaris>
+      <osver>3.16.0-4-amd64</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>glnxa64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
